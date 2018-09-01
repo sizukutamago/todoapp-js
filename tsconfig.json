@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "outFile": "./dist/index.js"
+  },
+  "include": [
+    "src/**/*",
+    "*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

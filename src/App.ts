@@ -1,9 +1,12 @@
 import TodoListModel from "./model/TodoListModel.js";
 import TodoItemModel from "./model/TodoItemModel.js";
-import { render } from "./view/html-util.js";
-import { TodoListView } from './view/TodoListView.js';
+import { render } from "./view/html-util";
+import { TodoListView } from './view/TodoListView';
 
 class App {
+    private todoListView: TodoListView;
+    private todoListModel: TodoListModel;
+
     constructor() {
         this.todoListView = new TodoListView();
         this.todoListModel = new TodoListModel();
@@ -23,8 +26,8 @@ class App {
 
     mount() {
         const formElement = document.querySelector("#js-form");
-        const inputElement = document.querySelector("#js-form-input");
-        const containerElement = document.querySelector("#js-todo-list");
+        const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById("#js-form-input");
+        const containerElement: HTMLInputElement = <HTMLInputElement>document.getElementById("#js-todo-list");
         const todoItemCountElement = document.querySelector("#js-todo-count");
 
         this.todoListModel.onChange(() => {
@@ -51,4 +54,5 @@ class App {
     }
 }
 
-export default App;
+const app = new App();
+app.mount();
