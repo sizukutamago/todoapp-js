@@ -25,10 +25,10 @@ export class App {
     }
 
     mount() {
-        const formElement = document.querySelector("#js-form");
+        const formElement: HTMLElement = document.querySelector("#js-form");
         const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById("#js-form-input");
         const containerElement: HTMLInputElement = <HTMLInputElement>document.getElementById("#js-todo-list");
-        const todoItemCountElement = document.querySelector("#js-todo-count");
+        const todoItemCountElement: HTMLElement = document.querySelector("#js-todo-count");
 
         this.todoListModel.onChange(() => {
             const todoItems: TodoItemModel[] = this.todoListModel.getTodoItems();

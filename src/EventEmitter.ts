@@ -10,7 +10,7 @@ export class EventEmitter {
      * @param {string} type イベント名
      * @param {Function} listener イベントリスナー
      */
-    addEventLisner(type, listener) {
+    addEventLisner(type: string, listener: Function) {
         if (!this._listeners.has(type)) {
             this._listeners.set(type, new Set());
         }
@@ -18,7 +18,7 @@ export class EventEmitter {
         listenerSet.add(listener);
     }
 
-    emit(type) {
+    emit(type: string) {
         const listenerSet = this._listeners.get(type);
         if (!listenerSet) {
             return;
@@ -28,7 +28,7 @@ export class EventEmitter {
         })
     }
 
-    removeEventLisner(type, listener) {
+    removeEventLisner(type: string, listener: Function) {
         const listenerSet = this._listeners.get(type);
         if (!listenerSet) {
             return;

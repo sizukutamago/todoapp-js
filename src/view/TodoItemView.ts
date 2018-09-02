@@ -1,7 +1,8 @@
 import {element} from "./html-util";
+import {TodoItemModel} from "../model/TodoItemModel";
 
 export class TodoItemView {
-    createElement(todoItem, {onUpdateTodo, onDeleteTodo}) {
+    createElement(todoItem: TodoItemModel, {onUpdateTodo, onDeleteTodo}) {
         const todoItemElement = todoItem.completed
             ? element`<li><input type="checkbox" class="checkbox" checked>
                       <s>${todoItem.title}</s>

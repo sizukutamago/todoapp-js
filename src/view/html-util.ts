@@ -1,4 +1,4 @@
-export function escapeSpecialChars(str) {
+export function escapeSpecialChars(str: string) {
     return str
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
