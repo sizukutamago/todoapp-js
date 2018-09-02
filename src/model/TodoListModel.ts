@@ -1,12 +1,15 @@
-import EventEmitter from "../EventEmitter.js";
+import {EventEmitter} from "../EventEmitter";
+import {TodoItemModel} from "./TodoItemModel";
 
-class TodoListModel extends EventEmitter{
+export class TodoListModel extends EventEmitter{
+    private items: TodoItemModel[];
+
     constructor(items = []) {
         super();
         this.items = items;
     }
 
-    getTotalCount() {
+    getTotalCount(): number {
         return this.items.length;
     }
 
@@ -25,15 +28,15 @@ class TodoListModel extends EventEmitter{
         this.emit('change');
     }
 
-    addTodo(todoItem) {
+    addTodo(todoItem: TodoItemModel) {
         this.items.push(todoItem);
         this.emitChange();
     }
 
-    updateTodo({id, completed}) {
-        const todoItem = this.items.find(todo => todo.id === id);
+    updateTodo(itemModel: TodoItemModel) {
+        const todoItem: TodoItemModel = this.items.find(todo => todo.id === itemModel.id);
         if (!todoItem) return;
-        todoItem.completed = completed;
+        todoItem.completed = itemModel.completed;
         this.emitChange();
     }
 
@@ -44,5 +47,3 @@ class TodoListModel extends EventEmitter{
         this.emitChange();
     }
 }
-
-export default TodoListModel;

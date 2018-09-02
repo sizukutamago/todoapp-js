@@ -1,4 +1,6 @@
-class EventEmitter {
+export class EventEmitter {
+    private _listeners;
+
     constructor() {
         this._listeners = new Map();
     }
@@ -38,5 +40,3 @@ class EventEmitter {
         })
     }
 }
-
-export default EventEmitter;

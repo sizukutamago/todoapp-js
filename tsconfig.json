@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "module": "system",
-    "outFile": "./dist/index.js"
+    "module": "commonjs",
+    "outDir": "./dist/",
+    "rootDir": "./src/",
+    "target": "es5",
+    "lib": ["es5", "es6", "dom"]
   },
-  "include": [
-    "src/**/*",
-    "*.ts"
-  ],
   "exclude": [
     "node_modules"
   ]

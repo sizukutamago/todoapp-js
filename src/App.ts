@@ -1,9 +1,9 @@
-import TodoListModel from "./model/TodoListModel.js";
-import TodoItemModel from "./model/TodoItemModel.js";
+import {TodoListModel} from "./model/TodoListModel";
+import {TodoItemModel} from "./model/TodoItemModel";
 import { render } from "./view/html-util";
 import { TodoListView } from './view/TodoListView';
 
-class App {
+export class App {
     private todoListView: TodoListView;
     private todoListModel: TodoListModel;
 
@@ -12,16 +12,16 @@ class App {
         this.todoListModel = new TodoListModel();
     }
 
-    handleAdd(title) {
+    handleAdd(title: string) {
         this.todoListModel.addTodo(new TodoItemModel({title, completed: false}));
     }
 
-    handleUpdate({id, completed}) {
-        this.todoListModel.updateTodo({id, completed});
+    handleUpdate(itemModel: TodoItemModel) {
+        this.todoListModel.updateTodo(itemModel);
     }
 
-    handleDelete({id}) {
-        this.todoListModel.deleteTodo({id});
+    handleDelete(id) {
+        this.todoListModel.deleteTodo(id);
     }
 
     mount() {
@@ -31,12 +31,12 @@ class App {
         const todoItemCountElement = document.querySelector("#js-todo-count");
 
         this.todoListModel.onChange(() => {
-            const todoItems = this.todoListModel.getTodoItems();
+            const todoItems: TodoItemModel[] = this.todoListModel.getTodoItems();
             // todoItemsに対応するTodoListViewを作成する
             const todoListElement = this.todoListView.createElement(todoItems, {
                 // Todoアイテムが更新イベントが発生したときによばれるリスナー関数
-                onUpdateTodo: ({ id, completed }) => {
-                    this.handleUpdate({id, completed});
+                onUpdateTodo: (itemModel: TodoItemModel) => {
+                    this.handleUpdate(itemModel);
                 },
                 // Todoアイテムが削除イベントが発生したときによばれるリスナー関数
                 onDeleteTodo: ({ id }) => {

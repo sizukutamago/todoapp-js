@@ -1,4 +1,4 @@
-import {element} from "./html-util.js";
+import {element} from "./html-util";
 
 export class TodoItemView {
     createElement(todoItem, {onUpdateTodo, onDeleteTodo}) {
