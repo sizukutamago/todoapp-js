@@ -3,7 +3,7 @@ import {TodoItemModel} from "./model/TodoItemModel";
 import { render } from "./view/html-util";
 import { TodoListView } from './view/TodoListView';
 
-export class App {
+export default class App {
     private todoListView: TodoListView;
     private todoListModel: TodoListModel;
 
@@ -26,8 +26,8 @@ export class App {
 
     mount() {
         const formElement: HTMLElement = document.querySelector("#js-form");
-        const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById("#js-form-input");
-        const containerElement: HTMLInputElement = <HTMLInputElement>document.getElementById("#js-todo-list");
+        const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById("js-form-input");
+        const containerElement: HTMLInputElement = <HTMLInputElement>document.getElementById("js-todo-list");
         const todoItemCountElement: HTMLElement = document.querySelector("#js-todo-count");
 
         this.todoListModel.onChange(() => {
@@ -53,6 +53,3 @@ export class App {
         })
     }
 }
-
-const app = new App();
-app.mount();
