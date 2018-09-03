@@ -7,7 +7,6 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "tsc": "tsc",
     "build": "webpack"
   }
 }
